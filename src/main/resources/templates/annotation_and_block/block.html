@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- th:block ==> 타임리프 자체 태그 -->
+<th:block th:each="user : ${users}">
+    <!-- div를 하나만 돌리려면 th:each로 충분하나, 2개 이상의 div를 반복하고 싶다면 th:block 사용할 것 -->
+    <div>
+        사용자 이름1 <span th:text="${user.username}"></span>
+        사용자 나이1 <span th:text="${user.age}"></span>
+    </div>
+
+    <div>
+        요약 <span th:text="${user.username} + ' / ' + ${user.age}"></span>
+    </div>
+
+    <div>
+        <br>
+    </div>
+</th:block>
+</body>
+</html>
