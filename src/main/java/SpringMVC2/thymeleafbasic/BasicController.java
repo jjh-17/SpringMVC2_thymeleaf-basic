@@ -22,8 +22,6 @@ public class BasicController {
 
     //=========================================================================
     //텍스트
-
-
     //순수 텍스트 출력
     @GetMapping("text-basic")
     public String textBasic(Model model) {
@@ -39,7 +37,7 @@ public class BasicController {
         return "text/text-basic";
     }
 
-    //Unescape : HTML에서 사용하는 특수 문자를 HTML 엔티티로 변경하는 것(excape) 방지
+    //Unescape : HTML에서 사용하는 특수 문자를 HTML 엔티티로 변경하는 것(escape) 방지
     @GetMapping("text-unescaped")
     public String textUnescaped(Model model) {
         model.addAttribute("data", "text-<b>basic</b>");
@@ -48,9 +46,8 @@ public class BasicController {
 
     //============================================================================
     //표현식
-
     @Data
-    static class User {
+    private static class User {
         private String username;
         private int age;
 
@@ -132,17 +129,14 @@ public class BasicController {
         return "expression/operation";
     }
 
-    //===================================================================================
-
-    //속성값 설정
+//    ===속성값 설정===
     @GetMapping("/attribute")
     public String attribute() {
         return "attribute/attribute";
     }
 
-    //==============================================================================
 
-    //반복
+//    ====반복===
     @GetMapping("/each")
     public String each(Model model) {
         addUsers(model);
@@ -158,33 +152,28 @@ public class BasicController {
         model.addAttribute("users", users);
     }
 
-    //=================================================================================
-
-    //조건부 평가
+//    ===조건부 평가===
     @GetMapping("/condition")
     public String condition(Model model) {
         addUsers(model);
         return "condition/condition";
     }
 
-    //=================================================================================
-    //주석 및 블럭
-
-    //주석
+//    ===주석===
     @GetMapping("/comments")
     public String comments(Model model) {
         model.addAttribute("data", "주석");
         return "annotation_and_block/comments";
     }
 
-    //블럭
+//    ===블럭===
     @GetMapping("/block")
     public String block(Model model) {
         addUsers(model);
         return "annotation_and_block/block";
     }
 
-    //자바스크립트 인라인
+//    ===인라인 자바스크립트===
     @GetMapping("javascript")
     public String javascipt(Model model) {
         model.addAttribute("user", new User("uesrA", 10));
